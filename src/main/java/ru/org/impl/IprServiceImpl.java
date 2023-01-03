@@ -18,9 +18,9 @@ public class IprServiceImpl implements IprService {
     @Override
     public void runThreads() throws IOException {
         setProps();
-        logger.info(String.valueOf(THREAD_COUNT));
+        logger.info(String.valueOf("Всего потоков: " + THREAD_COUNT));
 
-        ExecutorService executor = Executors.newFixedThreadPool(5);
+        ExecutorService executor = Executors.newFixedThreadPool(THREAD_COUNT);
         for (int i = 0; i < 10; i++) {
             Runnable worker = new TaskIpr(i);
             executor.execute(worker);
